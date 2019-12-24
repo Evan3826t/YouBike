@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./css/animate.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./css/all.css">
   <link rel="short icon" href="./images/bike_icon.ico" type="image/x-icon">
   <title>YouBike</title>
   <!-- Primary Meta Tags -->
@@ -29,20 +30,6 @@
   <meta property="twitter:description" content="YouBike 介紹">
   <meta property="twitter:image" content="./images/bg.jpg">
 </head>
-<style>
-  body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./images/bg.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    font-family: var(--font-family-sans-serif), 'Microsoft JHengHei';
-  }
-
-  #loading {
-    display: none;
-  }
-</style>
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container">
@@ -51,19 +38,28 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="location.html">Location</a>
+            <a class="nav-link" href="location.php">Location</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  <div class="container-fluid" id="content">
+    <div class="row">
+      <div class="col">
+        <?php include("map.php"); ?>
+      </div>
+      <div class="col">
+        123
+      </div>
+    </div>
+  </div>
   <div class="container-fluid" id="loading">
     <div class="row h-100">
       <div class="col-12 align-self-center text-center">

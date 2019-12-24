@@ -1,0 +1,41 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: var(--font-family-sans-serif), 'Microsoft JHengHei';
+  }
+
+  #loading {
+    display: none;
+  }
+
+  .carousel-item {
+    height: 700px;
+  }
+
+  .object-fit {
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  path{
+      position: absolute;
+  }
+
+  .click{
+    fill: red;
+  }
+  .fill{
+    fill: "#FFFBE2";
+  }
+
+  @media ( min-width: 768px){
+    .text:nth-child( even)>div:first-child{
+        order: 2;
+    }
+    .text:nth-child( even)>div:last-child{
+        order: 1;
+        text-align: left;
+    }
+  }
