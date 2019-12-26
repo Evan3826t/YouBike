@@ -21,11 +21,17 @@ body {
   
   path{
       position: absolute;
+      transform-style: preserve-3d;
+      transition: 0.5s;
   }
 
   .click{
     fill: red;
+    transform: translateY(-10px);
+    position: relative;
+    z-index: 100;
   }
+
   .fill{
     fill: "#FFFBE2";
   }

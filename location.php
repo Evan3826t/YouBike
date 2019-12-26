@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/fontawesome.all.min.css">
   <link rel="stylesheet" href="./css/all.css">
+  <link rel="stylesheet" href="./css/dataTables.bootstrap4.min.css">
   <link rel="short icon" href="./images/bike_icon.ico" type="image/x-icon">
   <title>YouBike</title>
   <!-- Primary Meta Tags -->
@@ -41,7 +42,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="location.php">Location</a>
@@ -52,11 +53,28 @@
   </nav>
   <div class="container-fluid" id="content">
     <div class="row">
-      <div class="col">
-        <?php include("map.php"); ?>
+      <div class="col-1.5">
+        <h1 id="location" class="text-center text-white">請選擇區域</h1>
+        <div>
+          <?php include("map.php"); ?>
+        </div>
       </div>
-      <div class="col">
-        123
+      <div class="col text-white" id="table">
+      <table class="table table-hover table-light  " id="addr">
+              <thead class="thead-dark ">
+                <tr class="text-center">
+                  <th style="width:120px">站名</th>
+                  <th style="width:120px">可借車數量</th>
+                  <th style="width:120px">場占總停車格</th>
+                  <th>地址</th>
+                </tr>
+              </thead>
+            
+        <tbody>
+
+            
+        </tbody>
+      </table>
       </div>
     </div>
   </div>
@@ -72,7 +90,58 @@
   <script src="./js/jquery-3.4.1.min.js"></script>
   <script src="./js/bootstrap.bundle.min.js"></script>
   <script src="./js/wow.min.js"></script>
+  <script src="./js/jquery.dataTables.min.js"></script>
+  <script src="./js/dataTables.bootstrap4.min.js"></script>
   <script>
+      let table = $("#addr").DataTable({
+        // 改成中文 要用伺服器開才會正常顯示
+        language: {
+          url: './datatables-chinese.json'
+        },
+
+        // 將詳細資料的排序&搜尋關閉
+        columnDefs: [
+          {
+              targets: 0,
+              createdCell:  function (td, cellData, rowData, row, col) {
+         			  $(td).attr('data-th', '站名'); 
+					    }
+          },
+          {
+              targets: 1,
+              createdCell:  function (td, cellData, rowData, row, col) {
+         			  $(td).attr('data-th', '站名'); 
+					    }
+          },
+          {
+              targets: 2,
+              createdCell:  function (td, cellData, rowData, row, col) {
+         			  $(td).attr('data-th', '站名'); 
+					    }
+          },
+          {
+              targets: 3,
+              createdCell:  function (td, cellData, rowData, row, col) {
+         			  $(td).attr('data-th', '站名'); 
+					    }
+          }
+        ],
+        columns: [
+            	{ data: 'sna'},
+            	{ data: 'sbi'},
+            	{ data: 'tot'},
+			      	{ data: 'ar'}
+        ],
+      })
+
+      $("path").on("click",function(){
+        $("path").removeClass("click");
+        $(this).addClass("click");
+        $("#location").html($(this).attr("id"));
+          let city = $(this).attr("id");
+          table.ajax.url( './api/content.php' ).load();
+      })
+      
   </script>
 </body>
 

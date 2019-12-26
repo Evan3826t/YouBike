@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1"
 	 id="svg2" xmlns:cc="http://creativecommons.org/ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" inkscape:version="0.47 r22583" sodipodi:docname="Map_蹐湧魂svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="625px" height="590px"
@@ -5870,15 +5867,23 @@
 	c-0.019-0.126-0.044-0.251-0.076-0.376L235.232,56.276z"/>
 <path fill="#FCC7A1" stroke="#6D6E71" stroke-miterlimit="10" d="M232.679,74.148l0.03,0.034
 	C232.699,74.171,232.69,74.16,232.679,74.148z"/>
+<use  xlink:href="#淡水區"/>
+<use  xlink:href="#林口區"/>
+<use  xlink:href="#永和區"/>
+<use  xlink:href="#中和區"/>
+<use  xlink:href="#土城區"/>
+<use  xlink:href="#樹林區"/>
+<use  xlink:href="#新店區"/>
+<use  xlink:href="#鶯歌區"/>
+<use  xlink:href="#金山區"/>
+<use  xlink:href="#萬里區"/>
+<use  xlink:href="#汐止區"/>
+<use  xlink:href="#平溪區"/>
+<use  xlink:href="#雙溪區"/>
+<use  xlink:href="#石碇區"/>
+<use  xlink:href="#三峽區"/>
+<use  xlink:href="#烏來區"/>
+<use  xlink:href="#坪林區"/>
+<use  xlink:href="#烏來區"/>
+
 </svg>
-
-<script src="./js/jquery-3.4.1.min.js"></script>
-<script>
-	$("path").on("click",function(){
-		console.log($(this).attr("id"));
-		$("path").removeClass("click");
-		$(this).addClass("click");
-		
-	})
-
-</script>
