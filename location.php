@@ -60,21 +60,6 @@
         </div>
       </div>
       <div class="col text-white" id="table">
-      <table class="table table-hover table-light  " id="addr">
-              <thead class="thead-dark ">
-                <tr class="text-center">
-                  <th style="width:120px">站名</th>
-                  <th style="width:120px">可借車數量</th>
-                  <th style="width:120px">場占總停車格</th>
-                  <th>地址</th>
-                </tr>
-              </thead>
-            
-        <tbody>
-
-            
-        </tbody>
-      </table>
       </div>
     </div>
   </div>
@@ -93,53 +78,29 @@
   <script src="./js/jquery.dataTables.min.js"></script>
   <script src="./js/dataTables.bootstrap4.min.js"></script>
   <script>
-      let table = $("#addr").DataTable({
-        // 改成中文 要用伺服器開才會正常顯示
-        language: {
-          url: './datatables-chinese.json'
-        },
-
-        // 將詳細資料的排序&搜尋關閉
-        columnDefs: [
-          {
-              targets: 0,
-              createdCell:  function (td, cellData, rowData, row, col) {
-         			  $(td).attr('data-th', '站名'); 
-					    }
-          },
-          {
-              targets: 1,
-              createdCell:  function (td, cellData, rowData, row, col) {
-         			  $(td).attr('data-th', '站名'); 
-					    }
-          },
-          {
-              targets: 2,
-              createdCell:  function (td, cellData, rowData, row, col) {
-         			  $(td).attr('data-th', '站名'); 
-					    }
-          },
-          {
-              targets: 3,
-              createdCell:  function (td, cellData, rowData, row, col) {
-         			  $(td).attr('data-th', '站名'); 
-					    }
-          }
-        ],
-        columns: [
-            	{ data: 'sna'},
-            	{ data: 'sbi'},
-            	{ data: 'tot'},
-			      	{ data: 'ar'}
-        ],
-      })
-
       $("path").on("click",function(){
         $("path").removeClass("click");
         $(this).addClass("click");
         $("#location").html($(this).attr("id"));
-          let city = $(this).attr("id");
-          table.ajax.url( './api/content.php' ).load();
+          let sarea = $(this).attr("id");
+          $.post("./api/content.php",{sarea},function(res){
+            $("#table").html(res);
+            $(".addr").DataTable({
+            // 改成中文 要用伺服器開才會正常顯示
+            language: {
+              url: './datatables-chinese.json'
+            },
+          
+            // 將詳細資料的排序&搜尋關閉
+            columnDefs: [
+              {
+                  targets: 4,
+                  orderable: false,
+                  searchable: false
+              }
+            ]
+            })
+          })
       })
       
   </script>
