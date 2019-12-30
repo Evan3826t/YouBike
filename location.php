@@ -31,6 +31,7 @@
   <meta property="twitter:description" content="YouBike 介紹">
   <meta property="twitter:image" content="./images/bg.jpg">
 </head>
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container">
@@ -42,10 +43,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.php">Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="location.php">Location</a>
+            <a class="nav-link" href="location.php">停車站點<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="introduction.php">各站介紹</a>
           </li>
         </ul>
       </div>
@@ -53,13 +57,17 @@
   </nav>
   <div class="container-fluid" id="content">
     <div class="row">
-      <div class="col-1.5">
+      <div class="col-1.5 my-5">
         <h1 id="location" class="text-center text-white">請選擇區域</h1>
-        <div>
+        <div >
           <?php include("map.php"); ?>
         </div>
       </div>
-      <div class="col text-white" id="table">
+      <div class="col text-white my-5" id="chart">
+        <canvas id="piechart" style="width:100px; height:100px"></canvas>
+        <div class="text-center my-3" id="count"></div>
+      </div>
+      <div class="col text-white my-5" id="table">
       </div>
     </div>
   </div>
@@ -70,39 +78,79 @@
       </div>
     </div>
   </div>
-  
+  <div class="container-fluid bg-warning text-dark text-center" id="footer">
+    <div class="row">
+      <div class="col-12">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="https://zh-tw.facebook.com/youbiketaipei"><i class="fab fa-facebook-square"></i></a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link text-dark" href="https://www.youbike.com.tw/"><i class="fas fa-globe"></i></a>
+          </li>
+        </ul>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>微笑單車
+      </div>
+    </div>
+  </div>
 
   <script src="./js/jquery-3.4.1.min.js"></script>
+  <script src="./js/Chart.min.js"></script>
   <script src="./js/bootstrap.bundle.min.js"></script>
   <script src="./js/wow.min.js"></script>
   <script src="./js/jquery.dataTables.min.js"></script>
   <script src="./js/dataTables.bootstrap4.min.js"></script>
   <script>
-      $("path").on("click",function(){
-        $("path").removeClass("click");
-        $(this).addClass("click");
-        $("#location").html($(this).attr("id"));
-          let sarea = $(this).attr("id");
-          $.post("./api/content.php",{sarea},function(res){
-            $("#table").html(res);
-            $(".addr").DataTable({
-            // 改成中文 要用伺服器開才會正常顯示
-            language: {
-              url: './datatables-chinese.json'
-            },
-          
-            // 將詳細資料的排序&搜尋關閉
-            columnDefs: [
+    $("path").on("click", function () {
+      $("path").removeClass("click");
+      $(this).addClass("click");
+      $("#location").html($(this).attr("id"));
+      let sarea = $(this).attr("id");
+      $.post("./api/content.php", { sarea }, function (res) {
+        $("#table").html(res);
+        let allnum = $(".main").data("allnum");
+        let disnum = $(".main").data("disnum");
+        $("#count").html(`<div>總站數:${allnum} 本區站數:${disnum}`);
+        let pie = $("#piechart");
+        let myPieChart = new Chart(pie, {
+          type: "pie",
+          data: {
+            // 資料區間名稱
+            labels: ["其他區總站數", "本區站數"],
+            // 資料集
+            datasets: [
               {
-                  targets: 4,
-                  orderable: false,
-                  searchable: false
+                // 名稱
+                label: " YouBike 站數",
+                // 資料
+                data: [allnum-disnum, disnum],
+                //線的顏色
+                borderColor: "#f00",
+                // 填滿顏色
+                backgroundColor: ["#FF8800", "#FFFF77"],
+                // 線的寬度
+                borderWidth: 2,
+
               }
             ]
-            })
-          })
+          },
+          // 設定
+          options: {
+            // 標題
+            title: {
+              text: "YouBike 站數",
+              display: true
+            }
+          }
+        })
+        // 設定字體顏色
+        Chart.defaults.global.defaultFontColor = "#fff";
       })
-      
+    })
+
   </script>
 </body>
 

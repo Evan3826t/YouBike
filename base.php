@@ -11,6 +11,16 @@ function all($dis){
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function nums($dis){
+    global $pdo;
+    if($dis == 1){
+        $sql = "SELECT count(*) FROM `location` WHERE 1";
+    }else{
+        $sql = "SELECT count(*) FROM `location` WHERE `sarea`='" . $dis . "'";
+    }
+    return $pdo->query($sql)->fetch();
+}
+
 function insert($data){
     global $pdo; 
     $key = "`" . implode("`,`", array_keys($data))  . "`";
