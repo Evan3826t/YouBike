@@ -38,6 +38,13 @@
 
 ?>
 <body>
+<div class="container-fluid" id="loading">
+    <div class="row h-100">
+      <div class="col-12 align-self-center text-center">
+        <img src="./images/loading.svg" alt="">
+      </div>
+    </div>
+  </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container">
       <div class="navbar-brand">YouBike</div>
@@ -54,20 +61,11 @@
           <li class="nav-item">
             <a class="nav-link" href="location.php">停車站點</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="introduction.php">各站介紹</a>
-          </li>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="container-fluid" id="loading">
-    <div class="row h-100">
-      <div class="col-12 align-self-center text-center">
-        <img src="./images/loading.svg" alt="">
-      </div>
-    </div>
-  </div>
+  
   <div class="container" id="content">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="col-12 my-3">
@@ -155,6 +153,13 @@
   <script src="./js/bootstrap.bundle.min.js"></script>
   <script src="./js/wow.min.js"></script>
   <script>
+    $(window).on("load", function(){
+        $("#loading").fadeOut(2000, function(){
+          $("#content").fadeIn();
+          $("#footer").fadeIn();
+          new WOW().init();
+        })
+      })
   </script>
 </body>
 

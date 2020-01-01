@@ -12,10 +12,9 @@
   $disnum = nums($sarea)[0];
   echo "<div class='main' data-allnum='".$allnum."' data-disnum='". $disnum ."'>";
   if($disnum>0){
+    echo "<h3>站名</h3>";
     foreach($data as $row){
-      echo "<div>" . $row['sna'] . "</div>";
-  
-      
+      echo "<div class='btn btn-warning my-1 sna' data-sna='" . $row['sna'] . "' data-toggle='modal' data-target='#exampleModalCenter'>" . $row['sna'] . "</div><br>";
     }
       echo "</div>";
   }else{

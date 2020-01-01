@@ -10,6 +10,11 @@ function all($dis){
     $sql = "SELECT * FROM `location` WHERE `sarea`='" . $dis . "'";
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
+function find($dis){
+    global $pdo; 
+    $sql = "SELECT * FROM `location` WHERE `sna`='" . $dis . "'";
+    return $pdo->query($sql)->fetch();
+}
 
 function nums($dis){
     global $pdo;

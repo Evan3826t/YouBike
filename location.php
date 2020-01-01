@@ -48,9 +48,6 @@
           <li class="nav-item">
             <a class="nav-link" href="location.php">停車站點<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="introduction.php">各站介紹</a>
-          </li>
         </ul>
       </div>
     </div>
@@ -59,22 +56,23 @@
     <div class="row">
       <div class="col-1.5 my-5">
         <h1 id="location" class="text-center text-white">請選擇區域</h1>
-        <div >
+        <div>
           <?php include("map.php"); ?>
         </div>
       </div>
       <div class="col text-white my-5" id="chart">
-        <canvas id="piechart" style="width:100px; height:100px"></canvas>
+        <canvas id="piechart"></canvas>
         <div class="text-center my-3" id="count"></div>
       </div>
       <div class="col text-white my-5" id="table">
       </div>
     </div>
   </div>
-  <div class="container-fluid" id="loading">
-    <div class="row h-100">
-      <div class="col-12 align-self-center text-center">
-        <img src="./images/loading.svg" alt="">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        
       </div>
     </div>
   </div>
@@ -83,7 +81,8 @@
       <div class="col-12">
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a class="nav-link text-dark" href="https://zh-tw.facebook.com/youbiketaipei"><i class="fab fa-facebook-square"></i></a>
+            <a class="nav-link text-dark" href="https://zh-tw.facebook.com/youbiketaipei"><i
+                class="fab fa-facebook-square"></i></a>
           </li>
           <li class="nav-item ">
             <a class="nav-link text-dark" href="https://www.youbike.com.tw/"><i class="fas fa-globe"></i></a>
@@ -111,6 +110,17 @@
       let sarea = $(this).attr("id");
       $.post("./api/content.php", { sarea }, function (res) {
         $("#table").html(res);
+
+        // modal onclick 註冊
+        $(".sna").on("click",function(){
+          let sna = $(this).data("sna");
+          $.post("./api/location.php",{sna},function(res){
+            $(".modal-content").html(res);
+          })
+
+        })
+        
+        // 圖表繪製
         let allnum = $(".main").data("allnum");
         let disnum = $(".main").data("disnum");
         $("#count").html(`<div>總站數:${allnum} 本區站數:${disnum}`);
@@ -126,7 +136,7 @@
                 // 名稱
                 label: " YouBike 站數",
                 // 資料
-                data: [allnum-disnum, disnum],
+                data: [allnum - disnum, disnum],
                 //線的顏色
                 borderColor: "#f00",
                 // 填滿顏色
