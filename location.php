@@ -138,9 +138,9 @@
                 // 資料
                 data: [allnum - disnum, disnum],
                 //線的顏色
-                borderColor: "#f00",
+                borderColor: "#FF8800",
                 // 填滿顏色
-                backgroundColor: ["#FF8800", "#FFFF77"],
+                backgroundColor: ["#FF8800", "#ffc107"],
                 // 線的寬度
                 borderWidth: 2,
 

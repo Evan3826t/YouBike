@@ -27,8 +27,8 @@ body {
   }
 
   .click{
-    fill: red;
-    transform: translateY(-10px);
+    fill: #ffc107;
+    transform: translateY(-5px);
     position: relative;
     z-index: 100;
   }

@@ -1,6 +1,6 @@
 <style>
 .main{
-  height:750px;
+  height:650px;
   overflow: auto;
 }
 </style>
