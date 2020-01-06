@@ -29,22 +29,30 @@
   <meta property="twitter:description" content="YouBike 介紹">
   <meta property="twitter:image" content="./images/bg.jpg">
 </head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154718568-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-154718568-2');
+</script>
+<style>
+#content{
+  display:none;
+}
+</style>
 <?php 
 
-// include ("base.php");
-// if(empty($_SESSION['save'])){
-//   include ("repo.php");
-// }
+include ("base.php");
+if(empty($_SESSION['save'])){
+  include ("repo.php");
+}
 
 ?>
 <body>
-<div class="container-fluid" id="loading">
-    <div class="row h-100">
-      <div class="col-12 align-self-center text-center">
-        <img src="./images/loading.svg" alt="">
-      </div>
-    </div>
-  </div>
+
   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container">
       <div class="navbar-brand">YouBike</div>
@@ -65,7 +73,13 @@
       </div>
     </div>
   </nav>
-  
+  <div class="container-fluid" id="loading">
+    <div class="row h-100">
+      <div class="col-12 align-self-center text-center">
+        <img src="./images/loading.svg" alt="">
+      </div>
+    </div>
+  </div>
   <div class="container" id="content">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="col-12 my-3">
@@ -128,8 +142,8 @@
         </p>
       </div>
     </div>
+    
   </div>
-  
   <div class="container-fluid bg-warning text-dark text-center" id="footer">
     <div class="row">
       <div class="col-12">
@@ -148,6 +162,7 @@
       </div>
     </div>
   </div>
+
 
   <script src="./js/jquery-3.4.1.min.js"></script>
   <script src="./js/bootstrap.bundle.min.js"></script>

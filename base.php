@@ -1,7 +1,7 @@
 <?php
 
-$dsn = "mysql:host=localhost;charset=utf8;dbname=ubike";
-$pdo = New PDO($dsn,"root","");
+$dsn = "mysql:host=localhost;charset=utf8;dbname=s1080311";
+$pdo = New PDO($dsn,"s1080311","s1080311");
 
 session_start();
 

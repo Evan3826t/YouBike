@@ -31,7 +31,15 @@
   <meta property="twitter:description" content="YouBike 介紹">
   <meta property="twitter:image" content="./images/bg.jpg">
 </head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154718568-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-154718568-2');
+</script>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container">
@@ -57,7 +65,7 @@
       <div class="col-1.5 my-5">
         <h1 id="location" class="text-center text-white">請選擇區域</h1>
         <div>
-          <?php include("map.php"); ?>
+          <?php include("Map.php"); ?>
         </div>
       </div>
       <div class="col text-white my-5" id="chart">
